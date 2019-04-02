@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>矩形计算器</title>
+  <link rel="stylesheet" href="rectangle.css">
+</head>
+<body>
+  <div id="main">
+    <h1>矩形计算器</h1>
+    <br>
+    <form>
+      <label>高度</label>
+      <input type="number" required min="0" step="0.01" id="height" autofocus>
+      <span></span>
+      <br>
+      <label>宽度</label>
+      <input type="number" required min="0" step="0.01" id="width">
+      <span></span>
+      <br> 
+      <input type="submit" value="计算" id="calculate">
+      <br>
+    </form>
+    <label>周长</label>
+    <input type="text" id="perimeter" disabled>
+    <br>
+    <label>面积</label>
+    <input type="text" id="area" disabled>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- build:js bundle.min.js -->
+  <script src="calc.js"></script>
+  <script src="rectangle.js"></script>
+  <!--endbuild-->
+</body>
+</html>
