@@ -14,12 +14,10 @@ $(function(){
       ['comment', '备注', 'C(100)', 'Y', 'N', '']
     ],
     rowHeaders: true,
+    contextMenu: true,
+    manualRowResize: true,
+    manualColResize: true,
     colHeaders: ['字段', '说明', '数据类型', '允许为空', '主键', '备注'],
-    headerTooltips: {
-      rows: false,
-      columns: true,
-      onlyTrimmed: true
-    }
   });
   return hot;
 });
