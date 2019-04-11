@@ -5,38 +5,61 @@
   <title>定时器按钮测试页面</title>
   <link rel="stylesheet" href="timer-button.css">
   <link rel="icon" href="https://i.wangding.in/favicon.ico" sizes="48x48" type="image/png">
-  <style>
-  .main{
-    width:200px;
-    height:200px;
-    margin:0 auto;
-}
-  </style>
-</head>
+  </head>
 <body>
+<details open>
+  <summary>添加按钮</summary>
+  <form class="timer-button">
+    <label>初始状态：</label>
+    <input type="radio" name="status" value="true">
+    <label>启用</label>
+    <input type="radio" name="status" value="false">
+    <label>禁用</label>
+    <br>
+    <label>禁用时长：</label>
+    <input class="timer" type="number" min="0" max="100" value="10" autofocus>"秒"
+    <br>
+    <label>按钮文字：</label>
+    <input type="text" value="同意" class="text">
+    <br>
+    <div>
+    <label>事件代码：</label>
+    <textarea class="alt">alert('你终于同意了！')</textarea>
+    </div>
+    <input type="button" value="添加" class="add-btn">
+  </form>
+  <div class="main"></div>
+<!--
 <input class="add-btn1" type="button" value="add timer button1">
 <input class="add-btn2" type="button" value="add timer button2">
 <div class="main1"></div>
 <div class="main2"></div>
+-->
+</details>
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="timer-button.js"></script>
 <script>
   $(function(){
-      var $btnAdd1 = $('input.add-btn1'),
-          $btnAdd2 = $('input.add-btn2')
-
-          $btnAdd1.click(function(){
+      var $btnAdd = $('input.add-btn'),
+          $text = $('input.text'),
+          $timer = $('input.timer'),
+          $alt = $('.alt');
+          
+          $btnAdd.click(function(){
+            var $bool = $('input[type="radio"]:checked');
+            console.log($bool.val());
             var btn1 = new TimerBtn();
             btn1.init({
-              container:'.main1',
-              title:'发送短信',
-              time:10,
+              container:'.main',
+              title:$text.val(),
+              time:$timer.val(),
+              enable:$bool.val(),
               clickHandler:function(){
-                alert('btn1 click');
+                alert($alt.val());
               }
             })
           })
-
+          /*
           $btnAdd2.click(function(){
             var btn2 = new TimerBtn();
             btn2.init({
@@ -48,6 +71,7 @@
               }
             });
           })
+          */
 
   });
 </script>

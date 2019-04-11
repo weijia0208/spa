@@ -75,28 +75,42 @@ function TimerBtn(){
     enable:false,
     clickHandler:null                        
   };
-  var n = cfg.time;
+  //var n = cfg.time;
+  
+  /*
+  if(cfg.enable){
+    console.log(cfg.enable);
+    cfg.time=1;
+  }
+  */
+  
+
   this.init = function(conf){
     $.extend(cfg,conf);
+    if(cfg.enable==='true'){
+      //console.log(cfg.enable);
+      cfg.time=1;          
+    }
     var $container = $(cfg.container);
-    var DOM = '<input type="button" class="timer-button" value="'+cfg.title+'('+n+'s)" disabled>';
+    var DOM = '<input type="button" class="time-button" value="'+cfg.title+'('+cfg.time+'s)" disabled>';
     $container.html(DOM);
-    var $btnAgree = $container.find('.timer-button');
+    var $btnAgree = $container.find('.time-button');
                          
     var timer = window.setInterval(function(){
-      n--;
-      if(n === 0){
+      cfg.time--;
+      if(cfg.time === 0){
         window.clearInterval(timer);
         $btnAgree.removeAttr('disabled');
         $btnAgree.val(cfg.title);                                                                                        
       }else{
-        $btnAgree.val(cfg.title +' (' + n +'s)');                           
+        $btnAgree.val(cfg.title +' (' + cfg.time +'s)');                           
       }                                                
     },1000);
     $btnAgree.click(function(){
       cfg.clickHandler();              
     });
     return $btnAgree;      
+
   };
 }
 
